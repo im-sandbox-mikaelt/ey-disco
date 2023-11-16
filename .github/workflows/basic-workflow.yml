@@ -44,3 +44,18 @@ jobs:
       - name: Run only if a PR is opened
         if: ${{ github.event_name == 'pull_request' }}
         run: echo Hello, from the PR!!!
+
+  ey-composite-action-job:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: im-sandbox-mikaelt/hello-ey1-composite-action
+          path: ./.github/actions/hello-ey1-composite-action
+
+      - id: foo
+        uses: ./.github/actions/hello-ey1-composite-action 
+        with:
+          who-to-greet: 'Mona the Octocat with EY!'
+      - run: echo random-number ${{ steps.foo.outputs.random-number }}
+        shell: bash
