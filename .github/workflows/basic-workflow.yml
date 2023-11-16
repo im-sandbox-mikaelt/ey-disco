@@ -52,6 +52,7 @@ jobs:
         with:
           repository: im-sandbox-mikaelt/hello-ey1-composite-action
           path: ./.github/actions/hello-ey1-composite-action
+          token: ${{ secrets.PROD_SECRET }}
 
       - id: foo
         uses: ./.github/actions/hello-ey1-composite-action 
